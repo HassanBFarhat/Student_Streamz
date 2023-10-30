@@ -1,8 +1,9 @@
-import React from 'react';
 
 function VideoInformationPage() {
     return (
+        <>
         <h1>VideoInformationPage</h1>
+        </>
     );
 }
 
