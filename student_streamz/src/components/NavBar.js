@@ -42,7 +42,7 @@ function NavBar() {
                         <label class="custom-control-label" for="customSwitch1">L/D</label>
                     </div>
                 </div>
-            </nav>
+            </nav> 
         </>
     );
 }
