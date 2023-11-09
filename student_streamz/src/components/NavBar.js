@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import logo from '../logoimages/student_streamz_logo.png'
+import logo from '../logoimages/logo6.png';
+import '../NavBar.css';
+
 
 function NavBar() {
 
@@ -20,16 +22,25 @@ function NavBar() {
             <Link to="/videoplayer">
                 <button>Video Player</button>
             </Link>
-            <nav class="navbar bg-body-tertiary ">
-                <div class="container">
-                    <a class="navbar-brand" href="/">
-                        <img src={logo} alt="Logo" width="40" height="40" class="logo"/>
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" id="logoContainer" href="/#">
+                        <img src={logo} alt="Logo" class="logo"/>
                         Student Streamz
                     </a>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    <br/>
+                    <form class="d-flex"  role="search">
+                        <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
+                    
                     </form>
+                    <br/>
+                    <br/>
+                    <div></div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1"></input>
+                        <label class="custom-control-label" for="customSwitch1">L/D</label>
+                    </div>
                 </div>
             </nav>
         </>

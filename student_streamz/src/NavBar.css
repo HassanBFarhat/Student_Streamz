@@ -1,0 +1,23 @@
+
+.logo {
+    padding-right: 10px; 
+    width: 46px;
+    height: 26px;
+}
+
+#logoContainer {
+    padding-left: 10px; 
+}
+
+#searchBar {
+    width: 750px;
+}
+
+.container-fluid {
+    background-color: rgb(200, 190, 224);
+    border-bottom: 1px solid #000;
+}
+
+.navbar {
+    margin-top: -8px;
+}
