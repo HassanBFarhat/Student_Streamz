@@ -7,6 +7,7 @@ import NotFoundPage from './webpages/NotFoundPage';
 import ShowSelectionPage from './webpages/ShowSelectionPage';
 import VideoInformationPage from './webpages/VideoInformationPage';
 import VideoPlayerPage from './webpages/VideoPlayerPage';
+import ShowOptionsPage from './webpages/ShowOptionsPage';
 import Layout from './Layout'
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
             <Route path='/showselection' element={<ShowSelectionPage />} />
             <Route path='/videoinformation' element={<VideoInformationPage />} />
             <Route path='/videoplayer' element={<VideoPlayerPage />} />
+            <Route path='/showoptions' element={<ShowOptionsPage />} />
+            <Route path='/showoptions/:searchText' element={<ShowOptionsPage />} />
           </Route>
         </Routes>
       </Router>
