@@ -7,31 +7,43 @@ function ShowOrMovieOption () {
     const queryText = inputText.replace(/ /g, '+');
 
     const apiKey = "e5aab5ab325195040b8c8598f9ba0a51";
-    const url = `https://api.themoviedb.org/3/search/movie?query=${queryText}&api_key=${apiKey}`;
+    const movieUrl = `https://api.themoviedb.org/3/search/movie?query=${queryText}&api_key=${apiKey}`;
+    const tvUrl = `https://api.themoviedb.org/3/search/tv?query=${queryText}&api_key=${apiKey}`;
     const imgUrl = `https://image.tmdb.org/t/p/original`;
 
-    const [apiData, setApiData] = useState([]);
+    const [apiMovieData, setApiMovieData] = useState([]);
+    const [apiTvData, setApiTvData] = useState([]);
 
-    // Assume fetchDataFromApi() is an async function that will return a Promise that will allow
-    // us to parse the JSON for the movies/shows searched
-    const fetchDataFromApi = async () => {
-        const response = await fetch(url);
+    // Assume fetchMovieDataFromApi() is an async function that will return a Promise that will allow
+    // us to parse the JSON for the movies searched
+    const fetchMovieDataFromApi = async () => {
+        const response = await fetch(movieUrl);
         const data = await response.json();
-        setApiData(data);
+        setApiMovieData(data);
+    };
+
+    // Assume fetchMovieDataFromApi() is an async function that will return a Promise that will allow
+    // us to parse the JSON for the shows searched
+    const fetchTvDataFromApi = async () => {
+        const response = await fetch(tvUrl);
+        const data = await response.json();
+        setApiTvData(data);
     };
 
     useEffect(() => {
       // Call the function to fetch the data from the API
-      fetchDataFromApi();
+      fetchMovieDataFromApi();
+      fetchTvDataFromApi();
     }, []); // Empty dependency array to ensure the effect runs only once
 
     // If the data array is undefined, to keep the application from not crashing, return null
-    if (apiData.results === undefined) {
+    if (apiMovieData.results === undefined || apiTvData.results === undefined) {
         return null;
     }
 
     // ***** Start: DEBUGGER REMOVE LATER *****
-    console.log(apiData.results)
+    console.log(apiMovieData.results)
+    console.log(apiTvData.results)
     // ***** End: DEBUGGER REMOVE LATER *****
 
     return (
@@ -39,7 +51,17 @@ function ShowOrMovieOption () {
         <div className='OptionBox'>
             <div className='OptionContainer'>
                 <div className='OptionsGrid'>
-                    {apiData.results.map(show => 
+                    {apiTvData.results.map(show => 
+                    <div>
+                        <a href='#videoinformation'>
+                            <img id="optionImg" src={imgUrl + show.poster_path}/>
+                        </a>
+                        <p>{show.name}</p>
+                        <p>{show.id}</p>
+                    </div>)}
+                </div>
+                <div className='OptionsGrid'>
+                    {apiMovieData.results.map(show => 
                     <div>
                         <a href='#videoinformation'>
                             <img id="optionImg" src={imgUrl + show.poster_path}/>
