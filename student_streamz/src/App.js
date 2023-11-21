@@ -22,7 +22,9 @@ function App() {
             <Route path='/notfound' element={<NotFoundPage />} />
             <Route path='/showselection' element={<ShowSelectionPage />} />
             <Route path='/movieinformation' element={<MovieInformationPage />} />
+            <Route path='/movieinformation/:movieId' element={<MovieInformationPage />} />
             <Route path='/showinformation' element={<ShowInformationPage />} />
+            <Route path='/showinformation/:showId' element={<ShowInformationPage />} />
             <Route path='/videoplayer' element={<VideoPlayerPage />} />
             <Route path='/showoptions' element={<ShowOptionsPage />} />
             <Route path='/showoptions/:searchText' element={<ShowOptionsPage />} />
