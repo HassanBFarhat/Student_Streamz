@@ -22,8 +22,11 @@ function NavBar() {
             <Link to="/showselection">
                 <button>Show Selection</button>
             </Link>
-            <Link to="/videoinformation">
-                <button>Video Information</button>
+            <Link to="/movieinformation">
+                <button>Movie Information</button>
+            </Link>
+            <Link to="/showinformation">
+                <button>Show Information</button>
             </Link>
             <Link to="/videoplayer">
                 <button>Video Player</button>

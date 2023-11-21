@@ -5,7 +5,8 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './webpages/HomePage';
 import NotFoundPage from './webpages/NotFoundPage';
 import ShowSelectionPage from './webpages/ShowSelectionPage';
-import VideoInformationPage from './webpages/VideoInformationPage';
+import MovieInformationPage from './webpages/MovieInformationPage';
+import ShowInformationPage from './webpages/ShowInformationPage';
 import VideoPlayerPage from './webpages/VideoPlayerPage';
 import ShowOptionsPage from './webpages/ShowOptionsPage';
 import Layout from './Layout'
@@ -20,7 +21,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path='/notfound' element={<NotFoundPage />} />
             <Route path='/showselection' element={<ShowSelectionPage />} />
-            <Route path='/videoinformation' element={<VideoInformationPage />} />
+            <Route path='/movieinformation' element={<MovieInformationPage />} />
+            <Route path='/showinformation' element={<ShowInformationPage />} />
             <Route path='/videoplayer' element={<VideoPlayerPage />} />
             <Route path='/showoptions' element={<ShowOptionsPage />} />
             <Route path='/showoptions/:searchText' element={<ShowOptionsPage />} />

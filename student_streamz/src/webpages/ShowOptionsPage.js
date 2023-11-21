@@ -53,7 +53,7 @@ function ShowOrMovieOption () {
                 <div className='OptionsGrid'>
                     {apiTvData.results.map(show => 
                     <div>
-                        <a href='#videoinformation'>
+                        <a href='#showinformation'>
                             <img id="optionImg" src={imgUrl + show.poster_path}/>
                         </a>
                         <p>{show.name}</p>
@@ -63,7 +63,7 @@ function ShowOrMovieOption () {
                 <div className='OptionsGrid'>
                     {apiMovieData.results.map(show => 
                     <div>
-                        <a href='#videoinformation'>
+                        <a href='#movieinformation'>
                             <img id="optionImg" src={imgUrl + show.poster_path}/>
                         </a>
                         <p>{show.title}</p>
