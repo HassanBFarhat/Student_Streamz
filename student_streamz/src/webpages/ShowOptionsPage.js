@@ -3,37 +3,38 @@ import "../ShowOptionsPage.css"
 
 function ShowOrMovieOption () {
 
-    const inputText = decodeURIComponent(window.location.href.split('/').pop());
-    const queryText = inputText.replace(/ /g, '+');
-
     const apiKey = "e5aab5ab325195040b8c8598f9ba0a51";
-    const movieUrl = `https://api.themoviedb.org/3/search/movie?query=${queryText}&api_key=${apiKey}`;
-    const tvUrl = `https://api.themoviedb.org/3/search/tv?query=${queryText}&api_key=${apiKey}`;
     const imgUrl = `https://image.tmdb.org/t/p/original`;
 
     const [apiMovieData, setApiMovieData] = useState([]);
     const [apiTvData, setApiTvData] = useState([]);
 
-    // Assume fetchMovieDataFromApi() is an async function that will return a Promise that will allow
-    // us to parse the JSON for the movies searched
-    const fetchMovieDataFromApi = async () => {
-        const response = await fetch(movieUrl);
-        const data = await response.json();
-        setApiMovieData(data);
-    };
-
-    // Assume fetchMovieDataFromApi() is an async function that will return a Promise that will allow
-    // us to parse the JSON for the shows searched
-    const fetchTvDataFromApi = async () => {
-        const response = await fetch(tvUrl);
-        const data = await response.json();
-        setApiTvData(data);
-    };
-
     useEffect(() => {
-      // Call the function to fetch the data from the API
-      fetchMovieDataFromApi();
-      fetchTvDataFromApi();
+        const inputText = decodeURIComponent(window.location.href.split('/').pop());
+        const queryText = inputText.replace(/ /g, '+');
+        
+        const movieUrl = `https://api.themoviedb.org/3/search/movie?query=${queryText}&api_key=${apiKey}`;
+        const tvUrl = `https://api.themoviedb.org/3/search/tv?query=${queryText}&api_key=${apiKey}`;
+        
+        // Assume fetchMovieDataFromApi() is an async function that will return a Promise that will allow
+        // us to parse the JSON for the movies searched
+        const fetchMovieDataFromApi = async () => {
+            const response = await fetch(movieUrl);
+            const data = await response.json();
+            setApiMovieData(data);
+        };
+
+        // Assume fetchMovieDataFromApi() is an async function that will return a Promise that will allow
+        // us to parse the JSON for the shows searched
+        const fetchTvDataFromApi = async () => {
+            const response = await fetch(tvUrl);
+            const data = await response.json();
+            setApiTvData(data);
+        };
+
+        // Call the function to fetch the data from the API
+        fetchMovieDataFromApi();
+        fetchTvDataFromApi();
     }, []); // Empty dependency array to ensure the effect runs only once
 
     // If the data array is undefined, to keep the application from not crashing, return null

@@ -9,21 +9,22 @@ function MovieInformationPage() {
         navigate(`/videoplayer/movie/${encodeURIComponent(apiMovieDetails.id)}/${encodeURIComponent(apiMovieDetails.imdb_id)}`);        
       };
 
-    const movieId = decodeURIComponent(window.location.href.split('/').pop());
-
-    const apiKey = `e5aab5ab325195040b8c8598f9ba0a51`;
-    const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
     const imgUrl = `https://image.tmdb.org/t/p/original`;
 
     const [apiMovieDetails, setApiMovieDetails] = useState([]);
 
-    const fetchMovieDetailsFromApi = async () => {
-        const response = await fetch(movieDetailsUrl);
-        const data = await response.json();
-        setApiMovieDetails(data);
-    };
-
     useEffect(() => {
+        const movieId = decodeURIComponent(window.location.href.split('/').pop());
+        
+        const apiKey = `e5aab5ab325195040b8c8598f9ba0a51`;
+        const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+
+        const fetchMovieDetailsFromApi = async () => {
+            const response = await fetch(movieDetailsUrl);
+            const data = await response.json();
+            setApiMovieDetails(data);
+        };
+
         fetchMovieDetailsFromApi();
     }, []);
 
@@ -46,7 +47,7 @@ function MovieInformationPage() {
         <h1>Status: {apiMovieDetails.status}</h1>
         <h1>Budget: {apiMovieDetails.budget}</h1>
         <h1>Revenue: {apiMovieDetails.revenue}</h1>
-        <h1>Poster: <img src={imgUrl + apiMovieDetails.poster_path}/></h1>
+        <h1>Poster: <img src={imgUrl + apiMovieDetails.poster_path} alt={apiMovieDetails.title}/></h1>
         <button onClick={handleSubmit}>Watch Movie Now</button>
         </>
     );

@@ -10,10 +10,6 @@ function ShowInformationPage() {
                   /season/${encodeURIComponent(selectedSeason)}/episode/${encodeURIComponent(selectedEpisode)}`);        
       };
 
-    const tvId = decodeURIComponent(window.location.href.split('/').pop());
-
-    const apiKey = `e5aab5ab325195040b8c8598f9ba0a51`;
-    const showDetailsUrl  = `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}`;
     const imgUrl = `https://image.tmdb.org/t/p/original`;
 
     const [apiShowDetails, setApiShowDetails] = useState([]);
@@ -36,17 +32,22 @@ function ShowInformationPage() {
         }
         setSelectedEpisode(parseInt(e.target.value, 10));
     }
-
-    const fetchShowDetailsFromApi = async () => {
-        const response = await fetch(showDetailsUrl);
-        const data = await response.json();
-        setApiShowDetails(data);
-        setMaxSelectedEpisode(data.seasons[0].episode_count);
-        setMinSelectedSeason(data.seasons[0].season_number);
-        setSelectedSeason(data.seasons[0].season_number);
-    };
     
     useEffect(() => {
+        const tvId = decodeURIComponent(window.location.href.split('/').pop());
+
+        const apiKey = `e5aab5ab325195040b8c8598f9ba0a51`;
+        const showDetailsUrl  = `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}`;
+
+        const fetchShowDetailsFromApi = async () => {
+            const response = await fetch(showDetailsUrl);
+            const data = await response.json();
+            setApiShowDetails(data);
+            setMaxSelectedEpisode(data.seasons[0].episode_count);
+            setMinSelectedSeason(data.seasons[0].season_number);
+            setSelectedSeason(data.seasons[0].season_number);
+        };
+
         fetchShowDetailsFromApi();
     }, []);
 
@@ -76,7 +77,7 @@ function ShowInformationPage() {
         <h1>Status: {apiShowDetails.status}</h1>
         <h1># of Seasons: {apiShowDetails.number_of_seasons}</h1>
         <h1># of Episodes: {apiShowDetails.number_of_episodes}</h1>
-        <h1>Poster: <img src={imgUrl + apiShowDetails.poster_path}/></h1>
+        <h1>Poster: <img src={imgUrl + apiShowDetails.poster_path} alt={apiShowDetails.name}/></h1>
         <br/>
         <label>
             Choose Season: 
