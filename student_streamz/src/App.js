@@ -4,7 +4,6 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './webpages/HomePage';
 import NotFoundPage from './webpages/NotFoundPage';
-import ShowSelectionPage from './webpages/ShowSelectionPage';
 import MovieInformationPage from './webpages/MovieInformationPage';
 import ShowInformationPage from './webpages/ShowInformationPage';
 import VideoPlayerPage from './webpages/VideoPlayerPage';
@@ -20,7 +19,6 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path='/notfound' element={<NotFoundPage />} />
-            <Route path='/showselection' element={<ShowSelectionPage />} />
             <Route path='/movieinformation' element={<MovieInformationPage />} />
             <Route path='/movieinformation/:movieId' element={<MovieInformationPage />} />
             <Route path='/showinformation' element={<ShowInformationPage />} />

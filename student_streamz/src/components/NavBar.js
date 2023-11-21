@@ -19,9 +19,6 @@ function NavBar() {
             <Link to="/notfound">
                 <button>Not Found</button>
             </Link>
-            <Link to="/showselection">
-                <button>Show Selection</button>
-            </Link>
             <Link to="/movieinformation">
                 <button>Movie Information</button>
             </Link>
