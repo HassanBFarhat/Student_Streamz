@@ -1,6 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
 function MovieInformationPage() {
+
+    const navigate = useNavigate();
+    const handleSubmit = () => {
+        // Redirect to the display page with the input text as a parameter
+        navigate(`/videoplayer/movie/${encodeURIComponent(apiMovieDetails.id)}/${encodeURIComponent(apiMovieDetails.imdb_id)}`);        
+      };
 
     const movieId = decodeURIComponent(window.location.href.split('/').pop());
 
@@ -40,6 +47,7 @@ function MovieInformationPage() {
         <h1>Budget: {apiMovieDetails.budget}</h1>
         <h1>Revenue: {apiMovieDetails.revenue}</h1>
         <h1>Poster: <img src={imgUrl + apiMovieDetails.poster_path}/></h1>
+        <button onClick={handleSubmit}>Watch Movie Now</button>
         </>
     );
 }

@@ -26,6 +26,8 @@ function App() {
             <Route path='/showinformation' element={<ShowInformationPage />} />
             <Route path='/showinformation/:showId' element={<ShowInformationPage />} />
             <Route path='/videoplayer' element={<VideoPlayerPage />} />
+            <Route path='/videoplayer/tv/:showIdTmdb/:showIdImdb/season/:seasonNum/episode/:episodeNum' element={<VideoPlayerPage />} />
+            <Route path='/videoplayer/movie/:movieIdTmdb/:movieIdImdb' element={<VideoPlayerPage />} />
             <Route path='/showoptions' element={<ShowOptionsPage />} />
             <Route path='/showoptions/:searchText' element={<ShowOptionsPage />} />
           </Route>
