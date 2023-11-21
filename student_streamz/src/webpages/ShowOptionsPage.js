@@ -54,7 +54,7 @@ function ShowOrMovieOption () {
                     {apiTvData.results.map(show => 
                     <div>
                         <a href='#showinformation'>
-                            <img id="optionImg" src={imgUrl + show.poster_path}/>
+                            <img id="optionImg" src={imgUrl + show.poster_path} alt={show.name}/>
                         </a>
                         <p>{show.name}</p>
                         <p>{show.id}</p>
@@ -64,7 +64,7 @@ function ShowOrMovieOption () {
                     {apiMovieData.results.map(show => 
                     <div>
                         <a href='#movieinformation'>
-                            <img id="optionImg" src={imgUrl + show.poster_path}/>
+                            <img id="optionImg" src={imgUrl + show.poster_path} alt={show.title}/>
                         </a>
                         <p>{show.title}</p>
                         <p>{show.id}</p>
