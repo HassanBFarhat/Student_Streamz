@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import '../ShowInformationPage.css'
 
 function ShowInformationPage() {
 
@@ -68,37 +69,48 @@ function ShowInformationPage() {
 
     return (
         <>
-        <h1>ShowInformationPage</h1>
-        <h1>Title: {apiShowDetails.name}</h1>
-        <h1>Original Title: {apiShowDetails.original_name}</h1>
-        <h1>Tagline: {apiShowDetails.tagline}</h1>
-        <h1>Overview: {apiShowDetails.overview}</h1>
-        <h1>Air Date: {apiShowDetails.first_air_date}</h1>
-        <h1>Status: {apiShowDetails.status}</h1>
-        <h1># of Seasons: {apiShowDetails.number_of_seasons}</h1>
-        <h1># of Episodes: {apiShowDetails.number_of_episodes}</h1>
-        <h1>Poster: <img src={imgUrl + apiShowDetails.poster_path} alt={apiShowDetails.name}/></h1>
-        <br/>
-        <label>
-            Choose Season: 
-            <input type="number" 
-                   min={minSelectedSeason} 
-                   max={apiShowDetails.number_of_seasons}
-                   value={selectedSeason} 
-                   onChange={handleSeasonChange}>
-            </input>
-        </label>
-        <label>
-            Choose Episode: 
-            <input type="number"
-                   min={1}
-                   max={maxSelectedEpisode}
-                   value={selectedEpisode}
-                   onChange={handleEpisodeChange}
-                   >
-            </input>
-        </label>
-        <button onClick={handleSubmit}>Click to Watch Show</button>
+        <div className='show-info-container'>
+            <div className='poster-img-container'>
+                <img id='the-poster-img' src={imgUrl + apiShowDetails.poster_path} alt={apiShowDetails.name}/>
+            </div>
+            <div className='show-details-container'>
+                <div className='show-title-and-tagline'>
+                    <h1>{apiShowDetails.name}</h1>
+                    <p id='original-title'>({apiShowDetails.original_name})</p>
+                    <p id='show-tagline'>{apiShowDetails.tagline}</p>
+                </div>
+                <div className='overview-and-extra-info'>
+                    <h3>Overview:</h3>
+                    <p>{apiShowDetails.overview}</p>
+                    <h4>First Air Date: <p id='details'>{apiShowDetails.first_air_date}</p></h4>
+                    <h4>Status: <p id='details'>{apiShowDetails.status}</p></h4>
+                    <h4>Number of Seasons: <p id='details'>{apiShowDetails.number_of_seasons}</p></h4>
+                    <h4>Number of Epidsodes: <p id='details'>{apiShowDetails.number_of_episodes}</p></h4>
+                </div>
+                <label>
+                    Choose Season: 
+                    <input type="number" 
+                           min={minSelectedSeason} 
+                           max={apiShowDetails.number_of_seasons}
+                           value={selectedSeason} 
+                           onChange={handleSeasonChange}>
+                    </input>
+                </label>
+                <br/>
+                <label>
+                    Choose Episode: 
+                    <input type="number"
+                           min={1}
+                           max={maxSelectedEpisode}
+                           value={selectedEpisode}
+                           onChange={handleEpisodeChange}>
+                    </input>
+                </label>
+                <br/>
+                <br/>
+                <button onClick={handleSubmit}>Click to Watch Show</button>
+            </div>
+        </div>
         </>
     );
 }

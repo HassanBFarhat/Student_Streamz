@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import '../MovieInformationPage.css'
 
 function MovieInformationPage() {
 
@@ -15,7 +16,7 @@ function MovieInformationPage() {
 
     useEffect(() => {
         const movieId = decodeURIComponent(window.location.href.split('/').pop());
-        
+
         const apiKey = `e5aab5ab325195040b8c8598f9ba0a51`;
         const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
 
@@ -38,17 +39,27 @@ function MovieInformationPage() {
 
     return (
         <>
-        <h1>MovieInformationPage</h1>
-        <h1>Title: {apiMovieDetails.title}</h1>
-        <h1>TagLine: {apiMovieDetails.tagline}</h1>
-        <h1>Overview: {apiMovieDetails.overview}</h1>
-        <h1>Runtime: {apiMovieDetails.runtime}</h1>
-        <h1>Realse Date: {apiMovieDetails.release_date}</h1>
-        <h1>Status: {apiMovieDetails.status}</h1>
-        <h1>Budget: {apiMovieDetails.budget}</h1>
-        <h1>Revenue: {apiMovieDetails.revenue}</h1>
-        <h1>Poster: <img src={imgUrl + apiMovieDetails.poster_path} alt={apiMovieDetails.title}/></h1>
-        <button onClick={handleSubmit}>Watch Movie Now</button>
+        <div className='movie-info-container'>
+            <div className='poster-img-container'>
+                <img id='the-poster-img' src={imgUrl + apiMovieDetails.poster_path} alt={apiMovieDetails.title}/>
+            </div>
+            <div className='movie-details-container'>
+                <div className='movie-title-and-tagline'>
+                    <h1>{apiMovieDetails.title}</h1>
+                    <p id='movie-tagline'>{apiMovieDetails.tagline}</p>
+                </div>
+                <div className='overview-and-extra-info'>
+                    <h3>Overview:</h3>
+                    <p>{apiMovieDetails.overview}</p>
+                    <h4>Runtime: <p id='details'>{apiMovieDetails.runtime}</p></h4>
+                    <h4>Release Date: <p id='details'>{apiMovieDetails.release_date}</p></h4>
+                    <h4>Status: <p id='details'>{apiMovieDetails.status}</p></h4>
+                    <h4>Budget: <p id='details'>{apiMovieDetails.budget}</p></h4>
+                    <h4>Revenue: <p id='details'>{apiMovieDetails.revenue}</p></h4>
+                </div>
+                <button onClick={handleSubmit}>Watch Movie Now</button>
+            </div>
+        </div>
         </>
     );
 }
