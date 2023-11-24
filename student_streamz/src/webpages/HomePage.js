@@ -12,12 +12,6 @@ function VideoBox({ showTitle, imdbID }) {
         setSelectedEpisode(parseInt(event.target.value, 10));
     };
 
-    const handleWatchClick = () => {
-        // Handle the watch button click, e.g., update the iframe src
-        const videoUrl = `https://vidsrc.xyz/embed/tv?imdb=${imdbID}&season=${selectedSeason}&episode=${selectedEpisode}`;
-        document.getElementById(`${imdbID}-videoFrame`).src = videoUrl;
-    };
-
     return (
         <div className="video-box">
             <h2>{showTitle}</h2>
