@@ -16,9 +16,6 @@ function NavBar() {
             <Link to="/">
                 <button>Home</button>
             </Link>
-            <Link to="/notfound">
-                <button>Not Found</button>
-            </Link>
             <Link to="/movieinformation">
                 <button>Movie Information</button>
             </Link>
