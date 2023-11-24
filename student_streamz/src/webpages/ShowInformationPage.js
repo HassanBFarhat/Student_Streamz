@@ -8,28 +8,27 @@ function ShowInformationPage() {
     const handleSubmit = () => {
         // Redirect to the display page with the input text as a parameter
         navigate(`/videoplayer/tv/${encodeURIComponent(apiShowDetails.id)}/${encodeURIComponent(apiShowDetails.imdb_id)}
-                  /season/${encodeURIComponent(selectedSeason)}/episode/${encodeURIComponent(selectedEpisode)}`);        
+                  /season/${encodeURIComponent(selectedFirstSeason)}/episode/${encodeURIComponent(selectedEpisode)}`);        
       };
 
     const imgUrl = `https://image.tmdb.org/t/p/original`;
 
     const [apiShowDetails, setApiShowDetails] = useState([]);
     const [maxSelectedEpisode, setMaxSelectedEpisode] = useState(0);
-    const [minSelectedSeason, setMinSelectedSeason] = useState(0);
-    const [selectedSeason, setSelectedSeason] = useState(0);
+    const [selectedFirstSeason, setSelectedFirstSeason] = useState(1);
     const [selectedEpisode, setSelectedEpisode] = useState(1);
 
     const handleSeasonChange = (e) => {
-        setMaxSelectedEpisode(apiShowDetails.seasons[selectedSeason].episode_count);
-        setSelectedSeason(parseInt(e.target.value, 10));
+        setMaxSelectedEpisode(apiShowDetails.seasons[selectedFirstSeason].episode_count);
+        setSelectedFirstSeason(parseInt(e.target.value, 10));
         setSelectedEpisode(1);
     }
 
     const handleEpisodeChange = (e) => {
-        if (minSelectedSeason !== 0) {
-            setMaxSelectedEpisode(apiShowDetails.seasons[selectedSeason - 1].episode_count);
+        if (apiShowDetails.number_of_seasons === 1) {
+            setMaxSelectedEpisode(apiShowDetails.seasons[selectedFirstSeason - 1].episode_count);
         } else {
-            setMaxSelectedEpisode(apiShowDetails.seasons[selectedSeason].episode_count);
+            setMaxSelectedEpisode(apiShowDetails.seasons[selectedFirstSeason].episode_count);
         }
         setSelectedEpisode(parseInt(e.target.value, 10));
     }
@@ -44,9 +43,17 @@ function ShowInformationPage() {
             const response = await fetch(showDetailsUrl);
             const data = await response.json();
             setApiShowDetails(data);
-            setMaxSelectedEpisode(data.seasons[0].episode_count);
-            setMinSelectedSeason(data.seasons[0].season_number);
-            setSelectedSeason(data.seasons[0].season_number);
+            if (data.number_of_seasons === 1) {
+                setMaxSelectedEpisode(data.seasons[0].episode_count);
+            } else {
+                setMaxSelectedEpisode(data.seasons[1].episode_count);
+            }
+            // setMinSelectedSeason(data.seasons[1].season_number);
+            if (data.number_of_seasons === 1) {
+                setSelectedFirstSeason(data.seasons[0].season_number);
+            } else {
+                setSelectedFirstSeason(data.seasons[1].season_number);
+            }
         };
 
         fetchShowDetailsFromApi();
@@ -59,11 +66,11 @@ function ShowInformationPage() {
     // ****** DEBUGGER ******
     console.log("FOURTH")
     console.log(apiShowDetails);
-    console.log(selectedSeason);
+    console.log(selectedFirstSeason);
     console.log(selectedEpisode);
     console.log(maxSelectedEpisode);
     console.log();
-    console.log(minSelectedSeason);
+    // console.log(minSelectedSeason);
     // ****** DEBUGGER ******    
 
 
@@ -90,9 +97,9 @@ function ShowInformationPage() {
                 <label>
                     Choose Season: 
                     <input type="number" 
-                           min={minSelectedSeason} 
+                           min={1} 
                            max={apiShowDetails.number_of_seasons}
-                           value={selectedSeason} 
+                           value={selectedFirstSeason} 
                            onChange={handleSeasonChange}>
                     </input>
                 </label>
