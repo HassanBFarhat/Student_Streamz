@@ -49,10 +49,13 @@ function NavBar() {
                     <br/>
                     <br/>
                     <div></div>
-                    <div class="custom-control custom-switch">
+                    {/* <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="customSwitch1"></input>
                         <label class="custom-control-label" for="customSwitch1">L/D</label>
-                    </div>
+                    </div> */}
+                    <a href="#/login">
+                        <button class="btn btn-outline-success" id="loginBtn">Login</button>
+                    </a>
                 </div>
             </nav>
         </>
