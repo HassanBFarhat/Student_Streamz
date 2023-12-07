@@ -28,6 +28,12 @@ function NavBar() {
             <Link to="/showoptions">
                 <button>Show Options</button>
             </Link>
+            <Link to="/login">
+                <button>Login</button>
+            </Link>
+            <Link to="/sign_up">
+                <button>Sign Up</button>
+            </Link>
             <nav class="navbar">
                 <div class="container-fluid">
                     <a class="navbar-brand" id="logoContainer" href="/#">
