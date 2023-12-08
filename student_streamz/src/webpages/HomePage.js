@@ -76,9 +76,11 @@ function HomePage() {
         { title: 'Malcolm in the Middle', imdbID: 'tt0212671' },
     ];
 
+    const username = decodeURIComponent(window.location.href.split('/').pop());
+
     return (
         <>
-            <h1>HomePage</h1>
+            <h1>HomePage {username} </h1>
             <div className="video-grid">
                 {shows.map((show) => (
                     <VideoBox key={show.imdbID} showTitle={show.title} imdbID={show.imdbID} />
