@@ -1,0 +1,64 @@
+.login-container {
+    border: 2px solid #0000002c;
+    margin-left: 35%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 5%;
+    margin-right: 35%;
+    margin-top: 5%;
+}
+
+.sign-up-container {
+    border: 2px solid #0000002c;
+    margin-left: 25%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 2%;
+    margin-right: 25%;
+    margin-top: 5%;
+}
+
+#username, #password, #first-name, #last-name, #birthday, #gender, #re-entered-password, #username2, #password2 {
+    margin-bottom: 5px; 
+    margin-right: 5%;
+    text-align: left;
+}
+
+#last-name {
+    margin-left: 4px;
+}
+
+#birthday {
+    margin-left: 2.5%;
+}
+
+#gender {
+    margin-left: 4%;
+}
+
+#username2 {
+    margin-left: 1.5%;
+}
+
+#password2 {
+    margin-left: 2.5%;
+}
+
+#re-entered-password {
+    margin-right: 5%;
+}
+
+#usernameInput, #passwordInput, #first-name-input, #last-name-input, #birthday-input, #gender-input, #re-entered-password-input, #username2-input, #password2-input {
+    width: 60%;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#re-entered-password-input {
+    margin-right:6%;
+}
+
+#passwordInput {
+    margin-left: 4px;
+}
