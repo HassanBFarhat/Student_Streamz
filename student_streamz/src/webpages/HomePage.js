@@ -1,15 +1,87 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 function VideoBox({ showTitle, imdbID }) {
     const [selectedSeason, setSelectedSeason] = useState(1);
     const [selectedEpisode, setSelectedEpisode] = useState(1);
-
     const handleSeasonChange = (event) => {
         setSelectedSeason(parseInt(event.target.value, 10));
     };
 
     const handleEpisodeChange = (event) => {
         setSelectedEpisode(parseInt(event.target.value, 10));
+    };
+
+    const [likeStatus, setLikeStatus] = useState(null);
+    const [likes, setLikes] = useState(0);
+    const [dislikes, setDislikes] = useState(0);
+
+    useEffect(() => {
+        fetch(`http://localhost:3002/api/likes/${imdbID}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setLikeStatus(data.likeStatus);
+                setLikes(data.likes);
+                setDislikes(data.dislikes);
+            })
+            .catch((error) => console.error('Error fetching like/dislike status:', error));
+    }, [imdbID]);
+
+    const handleLike = () => {
+        if (likeStatus === null) {
+
+            setLikeStatus(true);
+            updateLikeStatus(true);
+            setLikes(1);
+            setDislikes(0);
+        } else if (likeStatus === true) {
+
+            // If already liked, remove like
+            setLikeStatus(null);
+            updateLikeStatus(null);
+            setLikes(0);
+        } else {
+
+            setLikeStatus(true);
+            updateLikeStatus(true);
+            setLikes(1);
+            setDislikes(0);
+        }
+    };
+
+    const handleDislike = () => {
+        if (likeStatus === null) {
+
+            // If not liked/disliked yet, set as disliked
+            setLikeStatus(false);
+            updateLikeStatus(false);
+            setLikes(0);
+            setDislikes(1);
+        } else if (likeStatus === false) {
+
+            // If already disliked, remove dislike
+            setLikeStatus(null);
+            updateLikeStatus(null);
+            setDislikes(0);
+        } else {
+
+            // If liked, update to disliked
+            setLikeStatus(false);
+            updateLikeStatus(false);
+            setLikes(0);
+            setDislikes(1);
+        }
+    };
+
+    const updateLikeStatus = (likeStatus) => {
+        // Update like/dislike status on the server
+        fetch(`http://localhost:3002/api/likes/${imdbID}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ likeStatus }),
+        })
+            .catch((error) => console.error('Error updating like/dislike status:', error));
     };
 
     return (
@@ -19,8 +91,8 @@ function VideoBox({ showTitle, imdbID }) {
             <div className="video-container">
                 <iframe
                     id={`${imdbID}-videoFrame`}
-                    width="280" // Adjust the width as needed
-                    height="160" // Adjust the height as needed
+                    width="280"
+                    height="160"
                     src={`https://vidsrc.xyz/embed/tv?imdb=${imdbID}&season=${selectedSeason}&episode=${selectedEpisode}`}
                     allowFullScreen
                 ></iframe>
@@ -45,6 +117,12 @@ function VideoBox({ showTitle, imdbID }) {
                     />
                 </div>
             </div>
+
+            <div className="like-dislike-buttons">
+                <button onClick={handleLike}>Like ({likes})</button>
+                <button onClick={handleDislike}>Dislike ({dislikes})</button>
+            </div>
+
         </div>
     );
 }
