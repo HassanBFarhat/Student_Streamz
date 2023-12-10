@@ -6,7 +6,6 @@ function LoginPage() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -20,17 +19,13 @@ function LoginPage() {
             });
 
             if (response.ok) {
-                console.log("*****Login Successful!*****");
                 alert("*****Login Successful!*****");
                 // Redirect to the home page
                 navigate(`/${encodeURIComponent(username)}`); 
             } else {
-                const data = await response.json();
-                console.log(`There was an error logging in. ${data.error}`);
-                alert("There was an error logging in.");
+                alert("*****There was an error logging in. Please Try Again.*****");
             }
         } catch (err) {
-            console.error("There was an error during the login process. Please try again.");
             alert("There was an error during the login process. Please try again.");
         }
     };

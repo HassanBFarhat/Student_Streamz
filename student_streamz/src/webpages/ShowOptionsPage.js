@@ -42,13 +42,7 @@ function ShowOrMovieOption () {
         return null;
     }
 
-    // ***** Start: DEBUGGER REMOVE LATER *****
-    console.log(apiMovieData.results)
-    console.log(apiTvData.results)
-    // ***** End: DEBUGGER REMOVE LATER *****
-
     return (
-        // <h1>{inputText} <br/> {queryText} <br/> </h1>
         <div className='OptionBox'>
             <div className='OptionContainer'>
                 <div className='OptionsGrid'>
@@ -57,8 +51,9 @@ function ShowOrMovieOption () {
                         <a href={`?#/showinformation/${encodeURIComponent(show.id)}`}>
                             <img id="optionImg" src={imgUrl + show.poster_path} alt={show.name}/>
                         </a>
-                        <p>{show.name}</p>
-                        <p>{show.id}</p>
+                        <br />
+                        <br />
+                        <h5>{show.name}</h5>
                     </div>)}
                 </div>
                 <div className='OptionsGrid'>
@@ -67,14 +62,14 @@ function ShowOrMovieOption () {
                         <a href={`?#/movieinformation/${encodeURIComponent(show.id)}`}>
                             <img id="optionImg" src={imgUrl + show.poster_path} alt={show.title}/>
                         </a>
-                        <p>{show.title}</p>
-                        <p>{show.id}</p>
+                        <br />
+                        <br />
+                        <h5>{show.title}</h5>
                     </div>)}
                 </div>
             </div>
         </div>
     );
-
 }
 
 function ShowOptionsPage() {

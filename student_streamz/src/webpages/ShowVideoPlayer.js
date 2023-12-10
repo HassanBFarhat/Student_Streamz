@@ -8,7 +8,6 @@ function ShowVideoPlayer() {
     const tmdbId = decodeURIComponent(window.location.href.split('/')[6]);
     const seasonNum = decodeURIComponent(window.location.href.split('/')[9]);
     const episodeNum = decodeURIComponent(window.location.href.split('/')[11]);
-    const movieOrShow = decodeURIComponent(window.location.href.split('/')[5]);
     let showTitle;
 
 
@@ -35,20 +34,16 @@ function ShowVideoPlayer() {
         }
     }, []);
 
-
     return (
         <>
-        <h1>VideoPlayerPage</h1>
+        <br />
+        <br />
         <iframe
             id='video-player'
             src={`https://vidsrc.xyz/embed/tv?tmdb=${tmdbId}&season=${seasonNum}&episode=${episodeNum}`}
             title={showTitle}
             allowFullScreen
         ></iframe>
-        <h1>{tmdbId}</h1>
-        <h1>{seasonNum}</h1>
-        <h1>{episodeNum}</h1>
-        <h1>{movieOrShow}</h1>
         </>
     );
 }

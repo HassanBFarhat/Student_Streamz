@@ -7,7 +7,6 @@ function MovieVideoPlayer() {
 
     const imdbId = decodeURIComponent(window.location.href.split('/').pop());
     const tmdbId = decodeURIComponent(window.location.href.split('/')[6]);
-    const movieOrShow = decodeURIComponent(window.location.href.split('/')[5]);
     let movieTitle;
 
 
@@ -38,16 +37,14 @@ function MovieVideoPlayer() {
 
     return (
         <>
-        <h1>VideoPlayerPage</h1>
+        <br />
+        <br />
         <iframe
             id='video-player'
             src={ (imdbId === null) ? `https://vidsrc.xyz/embed/movie?tmdb=${tmdbId}` : `https://vidsrc.xyz/embed/movie?imdb=${imdbId}`}
             title={movieTitle}
             allowFullScreen
         ></iframe>
-        <h1>{imdbId}</h1>
-        <h1>{tmdbId}</h1>
-        <h1>{movieOrShow}</h1>
         </>
     );
 }

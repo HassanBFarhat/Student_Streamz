@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import logo from '../logoimages/logo6.png';
 import '../NavBar.css';
@@ -13,27 +13,6 @@ function NavBar() {
 
     return (
         <>
-            <Link to="/">
-                <button>Home</button>
-            </Link>
-            <Link to="/movieinformation">
-                <button>Movie Information</button>
-            </Link>
-            <Link to="/showinformation">
-                <button>Show Information</button>
-            </Link>
-            <Link to="/videoplayer">
-                <button>Video Player</button>
-            </Link>
-            <Link to="/showoptions">
-                <button>Show Options</button>
-            </Link>
-            <Link to="/login">
-                <button>Login</button>
-            </Link>
-            <Link to="/sign_up">
-                <button>Sign Up</button>
-            </Link>
             <nav class="navbar">
                 <div class="container-fluid">
                     <a class="navbar-brand" id="logoContainer" href="/#">
@@ -42,17 +21,23 @@ function NavBar() {
                     </a>
                     <br/>
                     <form class="d-flex"  role="search">
-                        <input class="form-control me-2" id="searchBar" type="text" placeholder="Search" aria-label="Search" value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
-                        <button class="btn btn-outline-success" id="searchBtn" type="submit" onClick={handleSubmit}>Search</button>
-                    
+                        <input class="form-control me-2" 
+                               id="searchBar" 
+                               type="text" 
+                               placeholder="Search" 
+                               aria-label="Search" 
+                               value={searchText} 
+                               onChange={(e) => setSearchText(e.target.value)}/>
+                        <button class="btn btn-outline-success" 
+                                id="searchBtn" 
+                                type="submit" 
+                                onClick={handleSubmit}>
+                                    Search
+                        </button>
                     </form>
                     <br/>
                     <br/>
                     <div></div>
-                    {/* <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1"></input>
-                        <label class="custom-control-label" for="customSwitch1">L/D</label>
-                    </div> */}
                     <a href="#/login">
                         <button class="btn btn-outline-success" id="loginBtn">Login</button>
                     </a>

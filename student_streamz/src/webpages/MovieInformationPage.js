@@ -31,11 +31,7 @@ function MovieInformationPage() {
 
     if (apiMovieDetails === undefined) {
         return null;
-    }
-
-    // ****** DEBUGGER ******
-    console.log(apiMovieDetails);
-    // ****** DEBUGGER ******    
+    }  
 
     return (
         <>

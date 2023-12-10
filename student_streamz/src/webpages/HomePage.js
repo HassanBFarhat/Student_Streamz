@@ -158,7 +158,7 @@ function HomePage() {
 
     return (
         <>
-            <h1>HomePage {username} </h1>
+            <h1>Welcome to Student Streamz! {username} </h1>
             <div className="video-grid">
                 {shows.map((show) => (
                     <VideoBox key={show.imdbID} showTitle={show.title} imdbID={show.imdbID} />

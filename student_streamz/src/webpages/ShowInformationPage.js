@@ -48,7 +48,6 @@ function ShowInformationPage() {
             } else {
                 setMaxSelectedEpisode(data.seasons[1].episode_count);
             }
-            // setMinSelectedSeason(data.seasons[1].season_number);
             if (data.number_of_seasons === 1) {
                 setSelectedFirstSeason(data.seasons[0].season_number);
             } else {
@@ -62,18 +61,7 @@ function ShowInformationPage() {
     if (apiShowDetails === undefined) {
         return null;
     }
-
-    // ****** DEBUGGER ******
-    console.log("FOURTH")
-    console.log(apiShowDetails);
-    console.log(selectedFirstSeason);
-    console.log(selectedEpisode);
-    console.log(maxSelectedEpisode);
-    console.log();
-    // console.log(minSelectedSeason);
-    // ****** DEBUGGER ******    
-
-
+   
     return (
         <>
         <div className='show-info-container'>

@@ -25,23 +25,18 @@ function SignUpPage() {
             });
 
             if (response.ok) {
-                console.log("*****Registration Successful!*****");
                 alert("*****Registration Successful!*****");
                 // Redirect to the home page
                 navigate(`/${encodeURIComponent(username)}`); 
             } else if (password !== reEnteredPassword) {
-                console.log("*****Passwords Dont match, please enter again correctly and submit once again.*****");
                 alert("*****Passwords Dont match, please enter again correctly and submit once again.*****");
             } else {
                 const data = await response.json();
-                console.log(`*****Registration Failed: ${data.error}*****`);
                 alert(`*****Registration Failed: ${data.error}*****`);
             }
         } catch (err) {
-            console.error("There was an error during the registration process. Please try again.");
             alert("There was an error during the registration process. Please try again.");
         }
-        
     };
 
     return (
