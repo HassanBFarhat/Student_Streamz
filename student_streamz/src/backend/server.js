@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const sqlite = require('sqlite3').verbose();
-const bcrypt = require('bcrypt');
+const sqlite = require('sqlite3').verbose();    // allows us to use SQLite as our DB
+const bcrypt = require('bcrypt');   // used for our password encryption
 
 const app = express();
 const port = 3001;
@@ -18,6 +18,8 @@ db.serialize(() => {
             gender TEXT, username TEXT, password TEXT)`)
 });
 
+// POST (URI = "/register") processes the user information passed on the registration page
+//                          and sends to DB allowing user to create an account to login/use.
 app.post('/register', async (request, response) => {
     const {firstname, lastname, birthday, gender, username, password} = request.body;
 
@@ -34,6 +36,9 @@ app.post('/register', async (request, response) => {
     });
 });
 
+// POST (URI = "/login") processes the user's login information passed on the login page
+//                       and sends to 'app' as a POST, but ultimately GET from the DB 
+//                       which will send appropriate response to user if or not allowed to log in.
 app.post('/login', async (request, response) => {
     const {username, password} = request.body;
 

@@ -11,7 +11,6 @@ function MovieInformationPage() {
       };
 
     const imgUrl = `https://image.tmdb.org/t/p/original`;
-
     const [apiMovieDetails, setApiMovieDetails] = useState([]);
 
     useEffect(() => {

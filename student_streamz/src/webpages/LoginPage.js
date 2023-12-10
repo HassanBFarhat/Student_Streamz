@@ -8,6 +8,7 @@ function LoginPage() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    // Handles the response to user when logging into the website
     const handleLogin = async () => {
         try {
             const response = await fetch('http://localhost:3001/login', {
@@ -26,7 +27,7 @@ function LoginPage() {
                 alert("*****There was an error logging in. Please Try Again.*****");
             }
         } catch (err) {
-            alert("There was an error during the login process. Please try again.");
+            alert("*****There was an error during the login process. Please try again.*****");
         }
     };
 

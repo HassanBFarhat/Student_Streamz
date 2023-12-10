@@ -11,9 +11,9 @@ function SignUpPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [reEnteredPassword, setReEnteredPassword] = useState('');
-
     const navigate = useNavigate();
 
+    // Handles the response to user when trying to register with our website 
     const handleRegistration = async () => {
         try {
             const response = await fetch(`http://localhost:3001/register`, {
@@ -35,7 +35,7 @@ function SignUpPage() {
                 alert(`*****Registration Failed: ${data.error}*****`);
             }
         } catch (err) {
-            alert("There was an error during the registration process. Please try again.");
+            alert("*****There was an error during the registration process. Please try again.*****");
         }
     };
 

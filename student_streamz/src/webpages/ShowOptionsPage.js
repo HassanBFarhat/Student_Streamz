@@ -76,18 +76,18 @@ function ShowOptionsPage() {
 
     useEffect(() => {
         const handleUrlChange = () => {
-          // Reload the page when the URL changes
+          // Reload the page when URL changes
           window.location.reload();
         };
     
-        // Attach the event listener to the current window
+        // Attach event listener to the current window
         window.addEventListener('popstate', handleUrlChange);
     
-        // Cleanup the event listener when the component unmounts
+        // Cleanup event listener when component unmounts
         return () => {
           window.removeEventListener('popstate', handleUrlChange);
         };
-      }, []); // Empty dependency array ensures the effect runs only once on component mount
+      }, []); // Empty dependency array, ensures effect runs only once
     
     return (
         <>

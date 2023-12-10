@@ -34,7 +34,6 @@ function MovieVideoPlayer() {
         }
     }, []);
 
-
     return (
         <>
         <br />

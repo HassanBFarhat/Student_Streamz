@@ -12,18 +12,21 @@ function ShowInformationPage() {
       };
 
     const imgUrl = `https://image.tmdb.org/t/p/original`;
-
     const [apiShowDetails, setApiShowDetails] = useState([]);
     const [maxSelectedEpisode, setMaxSelectedEpisode] = useState(0);
     const [selectedFirstSeason, setSelectedFirstSeason] = useState(1);
     const [selectedEpisode, setSelectedEpisode] = useState(1);
 
+    // When user changes the season on the webpage, this will trigger and page will dynamically update
+    // to appropriate season per the user.
     const handleSeasonChange = (e) => {
         setMaxSelectedEpisode(apiShowDetails.seasons[selectedFirstSeason].episode_count);
         setSelectedFirstSeason(parseInt(e.target.value, 10));
         setSelectedEpisode(1);
     }
 
+    // When user changes the episode on the webpage, this will trigger and page will dynamically update
+    // to appropriate episode per the user.
     const handleEpisodeChange = (e) => {
         if (apiShowDetails.number_of_seasons === 1) {
             setMaxSelectedEpisode(apiShowDetails.seasons[selectedFirstSeason - 1].episode_count);
