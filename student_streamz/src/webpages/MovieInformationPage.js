@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import '../MovieInformationPage.css'
+import '../style-sheets/MovieInformationPage.css'
 
 function MovieInformationPage() {
 

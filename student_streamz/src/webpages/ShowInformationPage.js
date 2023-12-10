@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import '../ShowInformationPage.css'
+import '../style-sheets/ShowInformationPage.css'
 
 function ShowInformationPage() {
 

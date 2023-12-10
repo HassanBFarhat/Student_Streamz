@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import logo from '../logoimages/logo6.png';
-import '../NavBar.css';
+import '../style-sheets/NavBar.css';
 
 function NavBar() {
     const [searchText, setSearchText] = useState('');

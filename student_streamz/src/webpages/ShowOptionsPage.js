@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import "../ShowOptionsPage.css"
+import "../style-sheets/ShowOptionsPage.css"
 
 function ShowOrMovieOption () {
 

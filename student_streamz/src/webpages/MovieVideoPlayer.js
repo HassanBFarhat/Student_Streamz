@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../VideoPlayerPage.css'
+import '../style-sheets/VideoPlayerPage.css'
 
 function MovieVideoPlayer() {
 
