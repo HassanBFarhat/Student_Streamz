@@ -146,13 +146,10 @@ app.post('/api/likes/:imdbID', (req, res) => {
     db.run('INSERT OR REPLACE INTO likes (imdbID, likeStatus) VALUES (?, ?)', [imdbID, likeStatus], updateLikesCallback);
 });
 
-function startServer() {
     app.listen(port, () => {
-        console.log(`Server is running on http://localhost:${port}`);
+        console.log(`Server is running on port ${port}`);
     });
-}
 
-startServer();
 
 
 
