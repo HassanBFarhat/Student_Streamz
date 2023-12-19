@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+<<<<<<< HEAD
 import './index.css';
 import './navbar.css';
+=======
+import 'bootstrap/dist/css/bootstrap.css';
+import './style-sheets/index.css';
+>>>>>>> Hassans-branch
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

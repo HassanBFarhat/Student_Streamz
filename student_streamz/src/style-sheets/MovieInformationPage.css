@@ -1,0 +1,52 @@
+#the-poster-img {
+    max-width: 30%;
+    height: 50%;
+    float: left;
+}
+
+.poster-img-container {
+    padding-right: 5%;
+    padding-left: 5%;    
+    padding-top: 2.5%;
+}
+
+.movie-details-container {
+    border: 2px solid #0000002c;
+    margin-left: 35%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+
+#movie-tagline {
+    font-style: italic;
+    font-size: 17px;
+}
+
+.movie-title-and-tagline {
+    padding-bottom: 5%;
+}
+
+.overview-and-extra-info {
+    text-align: left;
+    padding-top: 5%;
+}
+
+.overview-and-extra-info h4 p{
+    font-size: 20px;
+    display: inline
+}
+
+#details {
+    font-size: 20px;
+    font-weight: 450;
+    vertical-align: middle;
+}
+
+.overview-and-extra-info p{
+    font-weight: 550;
+    font-size: 20px;
+}

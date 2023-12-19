@@ -1,0 +1,10 @@
+#optionImg {
+    max-width: 100%;
+    height: 72%;
+}
+
+.OptionsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 5px;
+  }
